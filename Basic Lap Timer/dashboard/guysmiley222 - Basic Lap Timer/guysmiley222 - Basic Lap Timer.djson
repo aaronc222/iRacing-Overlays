@@ -1,0 +1,188 @@
+{
+  "Version": 2,
+  "Id": "fe9e9d8b-98f3-49b8-89e9-935928bd40de",
+  "BaseWidth": 320,
+  "BaseHeight": 150,
+  "BackgroundColor": "#00FFFFFF",
+  "IsOverlay": true,
+  "EnableClickThroughOverlay": true,
+  "Screens": [
+    {
+      "Name": "Lap timer",
+      "ScreenId": "13572486-a604-486c-8300-fd267eb76ed3",
+      "InGameScreen": true,
+      "IdleScreen": true,
+      "PitScreen": true,
+      "BackgroundColor": "#00FFFFFF",
+      "Items": [
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.RectangleItem, SimHub.Plugins",
+          "IsRectangleItem": true,
+          "Name": "Panel background",
+          "BackgroundColor": "#D910141B",
+          "Left": 0,
+          "Top": 0,
+          "Width": 320,
+          "Height": 150,
+          "Visible": true,
+          "BorderStyle": {
+            "RadiusTopLeft": 8,
+            "RadiusTopRight": 8,
+            "RadiusBottomLeft": 8,
+            "RadiusBottomRight": 8
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "Connection status",
+          "Text": "Waiting for iRacing",
+          "Font": "Consolas",
+          "FontSize": 13,
+          "FontWeight": "Normal",
+          "TextColor": "#FFD0D6DE",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 8,
+          "Width": 292,
+          "Height": 20,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing','CURRENT LAP','Waiting for iRacing')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "Current lap",
+          "Text": "--:--.---",
+          "Font": "Consolas",
+          "FontSize": 44,
+          "FontWeight": "Normal",
+          "TextColor": "#FFFFFFFF",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 30,
+          "Width": 292,
+          "Height": 52,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([DataCorePlugin.GameData.NewData.CurrentLapTime],'m\\\\:ss\\\\.fff'),'') == '','--:--.---',replace(format([DataCorePlugin.GameData.NewData.CurrentLapTime],'m\\\\:ss\\\\.fff'),'0:00.000','--:--.---')),'--:--.---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "Last label",
+          "Text": "LAST",
+          "Font": "Consolas",
+          "FontSize": 12,
+          "FontWeight": "Normal",
+          "TextColor": "#FFB0BAC8",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 94,
+          "Width": 140,
+          "Height": 18,
+          "Visible": true,
+          "Opacity": 100
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "Best label",
+          "Text": "SESSION BEST",
+          "Font": "Consolas",
+          "FontSize": 12,
+          "FontWeight": "Normal",
+          "TextColor": "#FFB0BAC8",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 166,
+          "Top": 94,
+          "Width": 140,
+          "Height": 18,
+          "Visible": true,
+          "Opacity": 100
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "Last lap",
+          "Text": "--:--.---",
+          "Font": "Consolas",
+          "FontSize": 22,
+          "FontWeight": "Normal",
+          "TextColor": "#FFFFFFFF",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 111,
+          "Width": 140,
+          "Height": 30,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([DataCorePlugin.GameData.NewData.LastLapTime],'m\\\\:ss\\\\.fff'),'') == '','--:--.---',replace(format([DataCorePlugin.GameData.NewData.LastLapTime],'m\\\\:ss\\\\.fff'),'0:00.000','--:--.---')),'--:--.---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "Best lap",
+          "Text": "--:--.---",
+          "Font": "Consolas",
+          "FontSize": 22,
+          "FontWeight": "Normal",
+          "TextColor": "#FFFFFFFF",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 166,
+          "Top": 111,
+          "Width": 140,
+          "Height": 30,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([DataCorePlugin.GameData.NewData.BestLapTime],'m\\\\:ss\\\\.fff'),'') == '','--:--.---',replace(format([DataCorePlugin.GameData.NewData.BestLapTime],'m\\\\:ss\\\\.fff'),'0:00.000','--:--.---')),'--:--.---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

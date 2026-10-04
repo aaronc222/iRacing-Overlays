@@ -1,0 +1,22 @@
+{
+  "Title": "guysmiley222 - Basic Lap Timer",
+  "Description": "Current, last, and session-best iRacing lap times.",
+  "Author": "guysmiley222",
+  "Width": 320,
+  "Height": 150,
+  "ScreenCount": 1,
+  "InGameScreensIndexs": [
+    0
+  ],
+  "IdleScreensIndexs": [
+    0
+  ],
+  "PitScreensIndexs": [
+    0
+  ],
+  "MainPreviewIndex": 0,
+  "IsOverlay": true,
+  "OverlaySizeWarning": false,
+  "MetadataVersion": 2,
+  "DashboardVersion": "0.1.2"
+}
