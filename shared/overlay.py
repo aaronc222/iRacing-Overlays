@@ -100,6 +100,7 @@ def write_package(root, name, definition, description, version, samples=None):
     source = root / "dashboard" / name
     source.mkdir(parents=True, exist_ok=True)
     metadata = {
+        "SettingsBuilder": definition["SettingsBuilder"],
         "Title": name, "Description": description, "Author": "guysmiley222",
         "Width": definition["BaseWidth"], "Height": definition["BaseHeight"],
         "ScreenCount": 1, "InGameScreensIndexs": [0], "IdleScreensIndexs": [0],

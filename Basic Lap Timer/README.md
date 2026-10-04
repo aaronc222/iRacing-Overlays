@@ -18,6 +18,8 @@ If upgrading from **iRacing Lap Timer Prototype**, import this renamed package a
 
 ## Themes
 
+Version **0.2.1** fixes missing theme options by including the settings definition in SimHub's dashboard metadata. Reimport the updated package and accept replacement. Restart SimHub if its settings list remains cached.
+
 Version **0.2.0** adds a **Theme** dropdown in this dashboard's SimHub settings. Open the dashboard settings from Dash Studio's entry/menu and select **Current**, **VS Code Dark+**, **Dracula**, **Nord**, **Monokai**, or **Solarized Dark**. Current keeps the original styling. Each overlay saves its own choice through SimHub.
 
 Reimport this package to upgrade, then stop and restart the overlay layout. The display name, dashboard identity, dimensions, and timing bindings are retained. The package is self-contained; no extra plugin is required.

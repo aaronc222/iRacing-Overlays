@@ -51,7 +51,7 @@ def build():
     definition = dashboard(items, 320, 200, "68b8286e-20df-48ea-bb08-3f7cb6ed5488",
                            "ae138595-87b5-4bc0-9e81-643d86172a80", "Advanced lap timer")
     write_package(ROOT, NAME, definition, "Live splits versus session and all-time best lap references.",
-                  "0.1.0", {"Connection status": "CURRENT LAP", "Current lap": "1:18.395",
+                  "0.1.1", {"Connection status": "CURRENT LAP", "Current lap": "1:18.395",
                             "session split": "-0.245", "session best": "1:20.123",
                             "alltime split": "+0.318", "alltime best": "1:18.012"})
 

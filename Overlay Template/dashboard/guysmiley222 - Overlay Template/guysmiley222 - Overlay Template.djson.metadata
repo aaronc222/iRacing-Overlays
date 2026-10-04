@@ -1,4 +1,42 @@
 {
+  "SettingsBuilder": {
+    "Settings": [
+      {
+        "$type": "SimHub.Plugins.SettingsBuilderModule.ComboboxEntry, SimHub.Plugins",
+        "Options": [
+          {
+            "Key": "current",
+            "Label": "Current"
+          },
+          {
+            "Key": "vscode-dark",
+            "Label": "VS Code Dark+"
+          },
+          {
+            "Key": "dracula",
+            "Label": "Dracula"
+          },
+          {
+            "Key": "nord",
+            "Label": "Nord"
+          },
+          {
+            "Key": "monokai",
+            "Label": "Monokai"
+          },
+          {
+            "Key": "solarized-dark",
+            "Label": "Solarized Dark"
+          }
+        ],
+        "PropertyName": "Theme",
+        "DefaultValue": "current",
+        "TypeName": "ComboboxEntry",
+        "Label": "Theme",
+        "Id": "df129f4e-2c82-59c1-9c86-4eb5af82e442"
+      }
+    ]
+  },
   "Title": "guysmiley222 - Overlay Template",
   "Description": "Reusable themed SimHub overlay starter.",
   "Author": "guysmiley222",
@@ -18,5 +56,5 @@
   "IsOverlay": true,
   "OverlaySizeWarning": false,
   "MetadataVersion": 2,
-  "DashboardVersion": "0.1.0"
+  "DashboardVersion": "0.1.1"
 }

@@ -24,6 +24,8 @@ The shared defaults are Consolas, 14-pixel padding, 8-pixel corners, and `D9` pa
 
 Each dashboard has a native SettingsBuilder dropdown named **Theme**, read through `Settings.Theme.Key`. Color expressions are generated directly into the dashboard, so an imported overlay needs no Python, repository checkout, internet access, shared SimHub plugin, or JavaScript extension. Settings are managed by SimHub per dashboard. Unknown, empty, and missing theme keys fall back to Current.
 
+The builder includes SettingsBuilder in both the dashboard and its metadata. SimHub uses the metadata to expose the settings UI; defining settings in the dashboard alone does not make the dropdown appear. Verification loads both models and checks that their dropdown identities and options match.
+
 Keep dashboard and settings identities stable for upgrades. Give every new overlay distinct dashboard and screen UUIDs; the theme setting ID is derived from its dashboard UUID. Builds never package a saved user selection.
 
 ## Verification

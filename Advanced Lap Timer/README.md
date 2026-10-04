@@ -15,6 +15,8 @@ Download **guysmiley222 - Advanced Lap Timer.simhubdash** using GitHub's **Downl
 
 The dashboard includes the same six-theme dropdown and Current default. Stop and restart the layout after importing an updated package.
 
+Version **0.1.1** fixes missing theme options by including the settings definition in the dashboard metadata. Reimport and accept replacement; restart SimHub if the settings list remains cached.
+
 ## Timing and splits
 
 Current lap uses `DataCorePlugin.GameData.NewData.CurrentLapTime`. Best references and live splits use SimHub's built-in persistent tracker, with each delta paired to its own reference:

@@ -1,4 +1,42 @@
 {
+  "SettingsBuilder": {
+    "Settings": [
+      {
+        "$type": "SimHub.Plugins.SettingsBuilderModule.ComboboxEntry, SimHub.Plugins",
+        "Options": [
+          {
+            "Key": "current",
+            "Label": "Current"
+          },
+          {
+            "Key": "vscode-dark",
+            "Label": "VS Code Dark+"
+          },
+          {
+            "Key": "dracula",
+            "Label": "Dracula"
+          },
+          {
+            "Key": "nord",
+            "Label": "Nord"
+          },
+          {
+            "Key": "monokai",
+            "Label": "Monokai"
+          },
+          {
+            "Key": "solarized-dark",
+            "Label": "Solarized Dark"
+          }
+        ],
+        "PropertyName": "Theme",
+        "DefaultValue": "current",
+        "TypeName": "ComboboxEntry",
+        "Label": "Theme",
+        "Id": "bab483cd-d550-5483-9294-e92c81a7d972"
+      }
+    ]
+  },
   "Title": "guysmiley222 - Basic Lap Timer",
   "Description": "Current, last, and session-best iRacing lap times.",
   "Author": "guysmiley222",
@@ -18,5 +56,5 @@
   "IsOverlay": true,
   "OverlaySizeWarning": false,
   "MetadataVersion": 2,
-  "DashboardVersion": "0.2.0"
+  "DashboardVersion": "0.2.1"
 }

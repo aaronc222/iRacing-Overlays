@@ -20,6 +20,7 @@ def verify():
         assert metadata["Title"] == name and metadata["IsOverlay"] is True
         assert definition["SettingsBuilder"]["Settings"][0]["DefaultValue"] == "current"
         assert len(definition["SettingsBuilder"]["Settings"][0]["Options"]) == 6
+        assert metadata["SettingsBuilder"] == definition["SettingsBuilder"], "Settings must be exposed in dashboard metadata"
         required = {name + suffix for suffix in (".djson", ".djson.metadata", ".djson.png",
                                                 ".djson.00.png", ".djson.ressources")}
         required |= {"themes.json", "preview-samples.json", "THEME_NOTICES.md"}

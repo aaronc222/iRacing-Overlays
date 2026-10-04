@@ -34,8 +34,16 @@ foreach ($entry in @(
         [Environment]::CurrentDirectory = $SimHubPath
         $model = [Newtonsoft.Json.JsonConvert]::DeserializeObject(
             $json, $assembly.GetType('SimHub.Plugins.OutputPlugins.GraphicalDash.Dashboard'), $settings)
+        $metadataJson = Get-Content -LiteralPath (Join-Path $dir ($entry.Name + '.djson.metadata')) -Raw
+        $metadata = [Newtonsoft.Json.JsonConvert]::DeserializeObject(
+            $metadataJson, $assembly.GetType('SimHub.Plugins.OutputPlugins.GraphicalDash.DashboardMetadata'), $settings)
     } finally { [Environment]::CurrentDirectory = $previousDirectory }
     $dropdown = $model.SettingsBuilder.Settings[0]
+    $metadataDropdown = $metadata.SettingsBuilder.Settings[0]
+    if ($null -eq $metadataDropdown -or $metadataDropdown.PropertyName -ne 'Theme' -or
+        $metadataDropdown.Options.Count -ne 6 -or $metadataDropdown.Id -ne $dropdown.Id) {
+        throw "Theme dropdown missing from dashboard metadata: $($entry.Name)"
+    }
     if ($dropdown.GetType().Name -ne 'ComboboxEntry' -or $dropdown.DefaultValue -ne 'current' -or
         $dropdown.PropertyName -ne 'Theme' -or $dropdown.Options.Count -ne 6) {
         throw "Theme dropdown failed to load: $($entry.Name)"

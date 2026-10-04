@@ -1,4 +1,42 @@
 {
+  "SettingsBuilder": {
+    "Settings": [
+      {
+        "$type": "SimHub.Plugins.SettingsBuilderModule.ComboboxEntry, SimHub.Plugins",
+        "Options": [
+          {
+            "Key": "current",
+            "Label": "Current"
+          },
+          {
+            "Key": "vscode-dark",
+            "Label": "VS Code Dark+"
+          },
+          {
+            "Key": "dracula",
+            "Label": "Dracula"
+          },
+          {
+            "Key": "nord",
+            "Label": "Nord"
+          },
+          {
+            "Key": "monokai",
+            "Label": "Monokai"
+          },
+          {
+            "Key": "solarized-dark",
+            "Label": "Solarized Dark"
+          }
+        ],
+        "PropertyName": "Theme",
+        "DefaultValue": "current",
+        "TypeName": "ComboboxEntry",
+        "Label": "Theme",
+        "Id": "0feee3ac-b06a-5e7a-9341-e9c9470c2b8c"
+      }
+    ]
+  },
   "Title": "guysmiley222 - Advanced Lap Timer",
   "Description": "Live splits versus session and all-time best lap references.",
   "Author": "guysmiley222",
@@ -18,5 +56,5 @@
   "IsOverlay": true,
   "OverlaySizeWarning": false,
   "MetadataVersion": 2,
-  "DashboardVersion": "0.1.0"
+  "DashboardVersion": "0.1.1"
 }
