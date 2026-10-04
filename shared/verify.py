@@ -12,7 +12,8 @@ from shared.overlay import CATALOG, validate_catalog
 def verify():
     validate_catalog()
     for folder, name in [("Basic Lap Timer", "guysmiley222 - Basic Lap Timer"),
-                         ("Overlay Template", "guysmiley222 - Overlay Template")]:
+                         ("Overlay Template", "guysmiley222 - Overlay Template"),
+                         ("Advanced Lap Timer", "guysmiley222 - Advanced Lap Timer")]:
         source = ROOT / folder / "dashboard" / name
         definition = json.loads((source / (name + ".djson")).read_text(encoding="utf-8"))
         metadata = json.loads((source / (name + ".djson.metadata")).read_text(encoding="utf-8"))

@@ -21,7 +21,8 @@ $repoRoot = Split-Path $PSScriptRoot
 $checks = 0
 foreach ($entry in @(
     @{Folder='Basic Lap Timer'; Name='guysmiley222 - Basic Lap Timer'},
-    @{Folder='Overlay Template'; Name='guysmiley222 - Overlay Template'}
+    @{Folder='Overlay Template'; Name='guysmiley222 - Overlay Template'},
+    @{Folder='Advanced Lap Timer'; Name='guysmiley222 - Advanced Lap Timer'}
 )) {
     $dir = Join-Path $repoRoot ($entry.Folder + '\dashboard\' + $entry.Name)
     $json = Get-Content -LiteralPath (Join-Path $dir ($entry.Name + '.djson')) -Raw
@@ -49,7 +50,7 @@ foreach ($entry in @(
             $target = if ($item.IsRectangleItem) { 'BackgroundColor' } else { 'TextColor' }
             $role = if ($item.IsRectangleItem) { 'panel' }
                 elseif ($item.Name -in @('Connection status','Title')) { 'heading' }
-                elseif ($item.Name -in @('Last label','Best label','Label')) { 'muted' }
+                elseif ($item.Name -in @('Last label','Best label','Label') -or $item.Name -like '* label') { 'muted' }
                 elseif ($item.Name -in @('Accent','Success','Warning','Danger')) { $item.Name.ToLowerInvariant() }
                 else { 'primary' }
             $expression = New-Object NCalc.Expression($item.Bindings.$target.Formula.Expression)

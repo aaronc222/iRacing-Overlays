@@ -5,6 +5,7 @@ A growing collection of SimHub overlays for iRacing by **guysmiley222**. Each ov
 | Overlay | Description | Download and setup |
 | --- | --- | --- |
 | Basic Lap Timer | Current, last, and session-best lap times in a compact translucent panel | [Basic Lap Timer](Basic%20Lap%20Timer/) |
+| Advanced Lap Timer | Current lap plus live splits and matching session/all-time best references | [Advanced Lap Timer](Advanced%20Lap%20Timer/) |
 
 ## Getting started
 

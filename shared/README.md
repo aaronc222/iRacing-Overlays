@@ -28,7 +28,7 @@ Keep dashboard and settings identities stable for upgrades. Give every new overl
 
 ## Verification
 
-After rebuilding both dashboards and their previews, run from the repository root:
+After rebuilding all dashboards and their previews, run from the repository root:
 
 ```powershell
 python .\shared\verify.py
@@ -36,7 +36,7 @@ powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\shared\verify-the
 powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File '.\Basic Lap Timer\verify.ps1'
 ```
 
-The Python check validates package completeness and independence, previews, and default-style compatibility. The PowerShell theme check loads the installed SimHub models and evaluates 135 color bindings across all presets plus null/unknown/empty selections. It uses the installed NCalc engine and a .NET equivalent for SimHub's `isnull` handler.
+The Python check validates package completeness and independence, previews, and default-style compatibility. The PowerShell theme check loads the installed SimHub models and evaluates 234 color bindings across all presets plus null/unknown/empty selections. It uses the installed NCalc engine and a .NET equivalent for SimHub's `isnull` handler.
 
 `preview.ps1` renders the generated color expressions in WPF on light and dark backdrops. These are static sample previews, not captures of a running SimHub dashboard. The exact Current preview matches the prior Basic Lap Timer PNG byte for byte.
 
