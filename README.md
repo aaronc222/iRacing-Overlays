@@ -15,6 +15,6 @@ See each overlay's README for details, a preview, and rebuilding instructions.
 
 ## Themes and new overlays
 
-Each themed dashboard has a **Theme** dropdown in its SimHub dashboard settings: **Current**, **VS Code Dark+**, **Dracula**, **Nord**, **Monokai**, and **Solarized Dark**. Current is the default. Choices are independent for each overlay.
+Every build generates six fixed-color `.simhubdash` packages in each overlay's `themed/` folder: **Current**, **VS Code Dark+**, **Dracula**, **Nord**, **Monokai**, and **Solarized Dark**. The theme appears in the filename and SimHub display name. Import the version you want; no settings dropdown is needed. Each theme has a stable, distinct dashboard identity, so variants can coexist.
 
 Start new overlays from [Overlay Template](Overlay%20Template/). The [shared foundation](shared/) provides reusable components, palettes, packaging, and verification. Imported packages include their color bindings and require no additional plugin or repository checkout.

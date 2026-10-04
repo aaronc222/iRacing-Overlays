@@ -21,7 +21,7 @@ def build():
     for index, role in enumerate(("accent", "success", "warning", "danger")):
         items.append(text(role.title(), role.upper(), padding + index * 75, 115, 73, 22, 11, role=role))
     write_package(ROOT, NAME, dashboard(items, 320, 150, DASHBOARD_ID, SCREEN_ID),
-                  "Reusable themed SimHub overlay starter.", "0.1.1")
+                  "Reusable themed SimHub overlay starter.", "0.2.0")
 
 
 if __name__ == "__main__":

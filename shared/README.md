@@ -2,6 +2,11 @@
 
 `overlay.py` builds themed text, translucent panels, dashboard settings, and standalone SimHub packages. It uses Python's standard library. `themes.json` is the source of truth for all six presets.
 
+
+## Compiled theme packages
+
+Every call to write_package also writes all six fixed-color variants under the overlay's themed/ folder. Filenames and display names end with the theme in brackets. Stable UUIDs are derived from the overlay identity and theme key. These packages contain literal colors and no SettingsBuilder or dynamic color bindings; timing formulas are preserved. This is the supported theme-selection workflow for overlays. The original source retains its theme formulas for preview generation, and the unsuffixed package remains a compatibility export. Earlier dropdown instructions below describe that source machinery, not an available overlay UI.
+
 ## Color roles and defaults
 
 | Role | Intended use |

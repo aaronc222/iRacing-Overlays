@@ -6,7 +6,7 @@ from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from shared.overlay import CATALOG, validate_catalog
+from shared.overlay import CATALOG, validate_catalog, color, theme_expression, ROLES
 
 
 def verify():
@@ -33,6 +33,27 @@ def verify():
         for key in [theme["key"] for theme in CATALOG["themes"]]:
             assert (ROOT / folder / "previews" / (key + ".png")).is_file()
         print(f"PASS: standalone package, catalog, notices, and six previews: {name}")
+        ids = set()
+        for theme in CATALOG['themes']:
+            title = f"{name} [{theme['label']}]"
+            with ZipFile(ROOT / folder / 'themed' / (title + '.simhubdash')) as package:
+                compiled = json.loads(package.read(f'{title}/{title}.djson'))
+                info = json.loads(package.read(f'{title}/{title}.djson.metadata'))
+                assert 'SettingsBuilder' not in compiled and 'SettingsBuilder' not in info
+                assert info['Title'] == title
+                assert compiled['Id'] not in ids and compiled['Id'] != definition['Id']
+                ids.add(compiled['Id'])
+                assert package.testzip() is None
+                assert package.read(f'{title}/{title}.djson.png') == (ROOT / folder / 'previews' / (theme['key'] + '.png')).read_bytes()
+                for original, item in zip(definition['Screens'][0]['Items'], compiled['Screens'][0]['Items']):
+                    for target in ('TextColor', 'BackgroundColor'):
+                        if target in original.get('Bindings', {}):
+                            expression = original['Bindings'][target]['Formula']['Expression']
+                            role = next(role for role in ROLES if theme_expression(role) == expression)
+                            assert item[target] == color(role, theme['key'])
+                            assert target not in item.get('Bindings', {})
+                    assert item.get('Bindings', {}).get('Text') == original.get('Bindings', {}).get('Text')
+        print(f'PASS: six fixed-color themed packages with unique identities, matching thumbnails, and unchanged timing: {name}')
         if folder == "Basic Lap Timer":
             assert definition["Id"] == "fe9e9d8b-98f3-49b8-89e9-935928bd40de"
             assert (definition["BaseWidth"], definition["BaseHeight"]) == (320, 150)

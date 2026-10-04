@@ -1,6 +1,7 @@
 """Standard-library-only SimHub components, theme settings, and packaging."""
 import json
 import re
+from copy import deepcopy
 from pathlib import Path
 from uuid import UUID, uuid5
 from zipfile import ZipFile, ZIP_DEFLATED
@@ -124,4 +125,43 @@ def write_package(root, name, definition, description, version, samples=None):
             if path.exists():
                 archive.write(path, f"{name}/{filename}")
     print(package)
+    write_themed_packages(root, name, definition, metadata)
     return package
+
+
+def write_themed_packages(root, name, definition, metadata):
+    """Compile every palette to literal colors with separate, stable import identities."""
+    output = root / "themed"
+    output.mkdir(parents=True, exist_ok=True)
+    for theme in THEMES:
+        title = f"{name} [{theme['label']}]"
+        compiled = deepcopy(definition)
+        compiled.pop("SettingsBuilder", None)
+        compiled["Id"] = str(uuid5(UUID(definition["Id"]), "compiled-theme:" + theme["key"]))
+        for screen in compiled["Screens"]:
+            screen["ScreenId"] = str(uuid5(UUID(screen["ScreenId"]), theme["key"]))
+            for item in screen["Items"]:
+                bindings = item.get("Bindings", {})
+                for target in ("TextColor", "BackgroundColor"):
+                    if target in bindings:
+                        expression = bindings[target]["Formula"]["Expression"]
+                        role = next(role for role in ROLES if theme_expression(role) == expression)
+                        item[target] = color(role, theme["key"])
+                        del bindings[target]
+                if not bindings:
+                    item.pop("Bindings", None)
+        info = deepcopy(metadata)
+        info.pop("SettingsBuilder", None)
+        info["Title"] = title
+        info["Description"] += " Theme: " + theme["label"] + "."
+        package = output / (title + ".simhubdash")
+        with ZipFile(package, "w", ZIP_DEFLATED) as archive:
+            for suffix, value in ((".djson", compiled), (".djson.metadata", info)):
+                archive.writestr(f"{title}/{title}{suffix}", json.dumps(value, indent=2) + "\n")
+            archive.writestr(f"{title}/{title}.djson.ressources", (root / "dashboard" / name / (name + ".djson.ressources")).read_bytes())
+            archive.writestr(f"{title}/THEME_NOTICES.md", (SHARED / "THEME_NOTICES.md").read_bytes())
+            preview = root / "previews" / (theme["key"] + ".png")
+            if preview.exists():
+                for suffix in (".djson.png", ".djson.00.png"):
+                    archive.write(preview, f"{title}/{title}{suffix}")
+        print(package)

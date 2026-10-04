@@ -36,7 +36,7 @@ def build():
     definition = dashboard(items, 320, 150, "fe9e9d8b-98f3-49b8-89e9-935928bd40de",
                            "13572486-a604-486c-8300-fd267eb76ed3", "Lap timer")
     write_package(ROOT, NAME, definition, "Current, last, and session-best iRacing lap times.",
-                  "0.2.1", {"Connection status": "CURRENT LAP", "Current lap": "1:18.395",
+                  "0.3.0", {"Connection status": "CURRENT LAP", "Current lap": "1:18.395",
                             "Last lap": "1:20.123", "Best lap": "1:18.012"})
 
 

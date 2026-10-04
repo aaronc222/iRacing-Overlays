@@ -74,3 +74,24 @@ foreach ($entry in @(
     Write-Output "PASS: installed SimHub models and six themes plus null/unknown/empty selection: $($entry.Name)"
 }
 Write-Output "PASS: $checks color-binding checks. Runtime UI selection and persistence still require a SimHub session."
+
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$compiledCount = 0
+foreach ($folder in @('Basic Lap Timer','Advanced Lap Timer','Overlay Template')) {
+    foreach ($file in Get-ChildItem -LiteralPath (Join-Path $repoRoot "$folder\themed") -Filter '*.simhubdash') {
+        $archive = [IO.Compression.ZipFile]::OpenRead($file.FullName)
+        try {
+            foreach ($archiveEntry in $archive.Entries | Where-Object {$_.FullName -match '\.djson(\.metadata)?$'}) {
+                $reader = New-Object IO.StreamReader($archiveEntry.Open())
+                try { $compiledJson = $reader.ReadToEnd() } finally { $reader.Dispose() }
+                $typeName = if ($archiveEntry.FullName.EndsWith('.metadata')) { 'DashboardMetadata' } else { 'Dashboard' }
+                $loaded = [Newtonsoft.Json.JsonConvert]::DeserializeObject($compiledJson,
+                    $assembly.GetType("SimHub.Plugins.OutputPlugins.GraphicalDash.$typeName"), $settings)
+                if ($null -eq $loaded) { throw "Failed to load compiled dashboard: $($file.Name)" }
+            }
+            $compiledCount++
+        } finally { $archive.Dispose() }
+    }
+}
+if ($compiledCount -ne 18) { throw "Expected 18 themed packages, found $compiledCount" }
+Write-Output 'PASS: all 18 compiled-themed dashboard and metadata files loaded with installed SimHub models; no runtime theme selection required'

@@ -11,11 +11,14 @@
 
 ## Install
 
-Download **guysmiley222 - Advanced Lap Timer.simhubdash** using GitHub's **Download raw file** button. Double-click it to import into SimHub, then add the new overlay to a Dash Studio overlay layout. Select iRacing and use windowed or borderless mode. Basic Lap Timer remains a separate dashboard.
+Choose a `.simhubdash` from [themed/](themed/) using GitHub's **Download raw file** button. Double-click it to import into SimHub, then add the new overlay to a Dash Studio overlay layout. Select iRacing and use windowed or borderless mode. Basic Lap Timer remains a separate dashboard.
 
-The dashboard includes the same six-theme dropdown and Current default. Stop and restart the layout after importing an updated package.
 
-Version **0.1.1** fixes missing theme options by including the settings definition in the dashboard metadata. Reimport and accept replacement; restart SimHub if the settings list remains cached.
+## Choose a theme
+
+Use the packages in [themed/](themed/). Each build compiles Current, VS Code Dark+, Dracula, Nord, Monokai, and Solarized Dark into separate dashboards. The theme is included in the filename and SimHub display name. Import the theme you want and select that variant in your overlay layout. No theme dropdown is required. Variants can coexist and retain their identity across rebuilds.
+
+The unsuffixed package is retained for compatibility; use themed packages for theme selection.
 
 ## Timing and splits
 
@@ -45,4 +48,4 @@ powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\verify.ps1
 
 Also run the repository's shared package and theme checks. Installed SimHub models, theme/fallback bindings, package contents, and sample timing expressions are verified. Preview images are static samples. Live reference-map availability, delta transitions across laps, and the displayed overlay require a practice-session check.
 
-For acceptance, complete clean laps and compare both splits to SimHub's matching reference laps. Check faster/slower signs, a fresh session without a reference, a retained all-time reference, disconnect/reconnect, and all six themes. The dashboard has its own identity and theme selection.
+For acceptance, complete clean laps and compare both splits to SimHub's matching reference laps. Check faster/slower signs, a fresh session without a reference, a retained all-time reference, disconnect/reconnect, and the selected themed variants. The dashboard has its own identity and theme selection.

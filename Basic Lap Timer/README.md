@@ -6,7 +6,7 @@ A 320 × 150 SimHub overlay showing **current**, **last**, and **session-best** 
 
 ## Install
 
-1. [Download the dashboard](guysmiley222%20-%20Basic%20Lap%20Timer.simhubdash). On GitHub's file page, choose **Download raw file**.
+1. [Choose a themed dashboard](themed/). On GitHub's file page, choose **Download raw file**.
 2. Open SimHub, select **iRacing**, and double-click the downloaded `.simhubdash` file. Accept the import prompt.
 3. In **Dash Studio → Overlays**, add **guysmiley222 - Basic Lap Timer** to an overlay layout.
 4. Start the layout, position and scale the panel, then lock it using SimHub's layout controls.
@@ -16,15 +16,12 @@ No additional plugin is required. SimHub manages placement, scaling, and locking
 
 If upgrading from **iRacing Lap Timer Prototype**, import this renamed package and select it in your layout in place of the old entry.
 
-## Themes
 
-Version **0.2.1** fixes missing theme options by including the settings definition in SimHub's dashboard metadata. Reimport the updated package and accept replacement. Restart SimHub if its settings list remains cached.
+## Choose a theme
 
-Version **0.2.0** adds a **Theme** dropdown in this dashboard's SimHub settings. Open the dashboard settings from Dash Studio's entry/menu and select **Current**, **VS Code Dark+**, **Dracula**, **Nord**, **Monokai**, or **Solarized Dark**. Current keeps the original styling. Each overlay saves its own choice through SimHub.
+Use the packages in [themed/](themed/). Each build compiles Current, VS Code Dark+, Dracula, Nord, Monokai, and Solarized Dark into separate dashboards. The theme is included in the filename and SimHub display name. Import the theme you want and select that variant in your overlay layout. No theme dropdown is required. Variants can coexist and retain their identity across rebuilds.
 
-Reimport this package to upgrade, then stop and restart the overlay layout. The display name, dashboard identity, dimensions, and timing bindings are retained. The package is self-contained; no extra plugin is required.
-
-![Theme previews on dark and light backgrounds](themes-preview.png)
+The unsuffixed package is retained for compatibility; use themed packages for theme selection.
 
 ## Behavior
 
