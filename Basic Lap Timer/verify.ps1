@@ -10,8 +10,13 @@ $null = [Reflection.Assembly]::LoadFrom((Join-Path $SimHubPath 'NCalc.dll'))
 $json = [IO.File]::ReadAllText($source)
 $settings = New-Object Newtonsoft.Json.JsonSerializerSettings
 $settings.TypeNameHandling = [Newtonsoft.Json.TypeNameHandling]::Auto
-$model = [Newtonsoft.Json.JsonConvert]::DeserializeObject(
-    $json, $assembly.GetType('SimHub.Plugins.OutputPlugins.GraphicalDash.Dashboard'), $settings)
+$previousDirectory = [Environment]::CurrentDirectory
+try {
+    # SimHub's SettingsBuilder type resolver scans its installation directory.
+    [Environment]::CurrentDirectory = $SimHubPath
+    $model = [Newtonsoft.Json.JsonConvert]::DeserializeObject(
+        $json, $assembly.GetType('SimHub.Plugins.OutputPlugins.GraphicalDash.Dashboard'), $settings)
+} finally { [Environment]::CurrentDirectory = $previousDirectory }
 if ($model.BaseWidth -ne 320 -or $model.BaseHeight -ne 150 -or $model.Screens.Count -ne 1) {
     throw 'Unexpected dashboard dimensions or screen count'
 }

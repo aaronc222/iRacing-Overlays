@@ -16,6 +16,14 @@ No additional plugin is required. SimHub manages placement, scaling, and locking
 
 If upgrading from **iRacing Lap Timer Prototype**, import this renamed package and select it in your layout in place of the old entry.
 
+## Themes
+
+Version **0.2.0** adds a **Theme** dropdown in this dashboard's SimHub settings. Open the dashboard settings from Dash Studio's entry/menu and select **Current**, **VS Code Dark+**, **Dracula**, **Nord**, **Monokai**, or **Solarized Dark**. Current keeps the original styling. Each overlay saves its own choice through SimHub.
+
+Reimport this package to upgrade, then stop and restart the overlay layout. The display name, dashboard identity, dimensions, and timing bindings are retained. The package is self-contained; no extra plugin is required.
+
+![Theme previews on dark and light backgrounds](themes-preview.png)
+
 ## Behavior
 
 - Times use `m:ss.fff`. Zero or missing values show `--:--.---`, including briefly at the start of a lap.
@@ -28,7 +36,9 @@ The time bindings are `DataCorePlugin.GameData.NewData.CurrentLapTime`, `LastLap
 
 ## Verification
 
-The original prototype's import, display, and corrected live connection were confirmed in a practice session. The renamed package passes loading checks against installed SimHub dashboard models, NCalc sample-time and connection-state checks, and package structure checks. A static WPF layout preview was rendered and visually inspected. The renamed package's UI import has not been separately tested.
+The original prototype's import, display, and corrected live connection were confirmed in a practice session. Version 0.2.0 passes installed SimHub model loading, six-theme/fallback color checks, existing lap-time/connection checks, and package structure checks. All themes were rendered and visually inspected over dark and light backgrounds. The Current preview is byte-for-byte identical to the previous preview.
+
+**Manual checks pending:** import version 0.2.0, switch the Theme dropdown, confirm live color updates, and restart the overlay to confirm the selection persists. Native SimHub UI automation is unavailable here. Settings persistence is provided by SimHub but has not been verified in its UI for this package.
 
 The NCalc checks use .NET equivalents for SimHub's `format`, `replace`, and `isnull` handlers. They cover minute rollover, missing and zero values, independent lap bindings, session reset, disconnect, another game, and reconnect. They do not replace a live overlay test.
 
@@ -36,7 +46,7 @@ For live acceptance, confirm the timer advances, last updates after crossing the
 
 ## Rebuild
 
-The `dashboard/guysmiley222 - Basic Lap Timer/` folder contains editable `.djson` source, metadata, thumbnails, and the resource archive. `build.py` uses only Python's standard library. From this folder, run:
+The `dashboard/guysmiley222 - Basic Lap Timer/` folder contains editable `.djson` source, metadata, thumbnails, theme catalog, attribution, and the resource archive. Rebuilding requires the repository's `shared/` folder; the imported package does not. `build.py` uses only Python's standard library. From this folder, run:
 
 ```powershell
 python .\build.py
