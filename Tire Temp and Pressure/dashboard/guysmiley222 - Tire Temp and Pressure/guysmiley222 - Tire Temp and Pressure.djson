@@ -1,0 +1,792 @@
+{
+  "Version": 2,
+  "Id": "c43780b0-2a89-4e76-bf06-950c8078fde3",
+  "BaseWidth": 320,
+  "BaseHeight": 240,
+  "BackgroundColor": "#00FFFFFF",
+  "IsOverlay": true,
+  "EnableClickThroughOverlay": true,
+  "SettingsBuilder": {
+    "Settings": [
+      {
+        "$type": "SimHub.Plugins.SettingsBuilderModule.ComboboxEntry, SimHub.Plugins",
+        "Options": [
+          {
+            "Key": "current",
+            "Label": "Current"
+          },
+          {
+            "Key": "vscode-dark",
+            "Label": "VS Code Dark+"
+          },
+          {
+            "Key": "dracula",
+            "Label": "Dracula"
+          },
+          {
+            "Key": "nord",
+            "Label": "Nord"
+          },
+          {
+            "Key": "monokai",
+            "Label": "Monokai"
+          },
+          {
+            "Key": "solarized-dark",
+            "Label": "Solarized Dark"
+          }
+        ],
+        "PropertyName": "Theme",
+        "DefaultValue": "current",
+        "TypeName": "ComboboxEntry",
+        "Label": "Theme",
+        "Id": "f91789ea-6131-5ca6-b5e5-9d05eea9453d"
+      }
+    ]
+  },
+  "Screens": [
+    {
+      "Name": "Tire readings",
+      "ScreenId": "5a966e21-a636-4ac3-9a95-8d902c112e6a",
+      "InGameScreen": true,
+      "IdleScreen": true,
+      "PitScreen": true,
+      "BackgroundColor": "#00FFFFFF",
+      "Items": [
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.RectangleItem, SimHub.Plugins",
+          "IsRectangleItem": true,
+          "Name": "Panel background",
+          "Left": 0,
+          "Top": 0,
+          "Width": 320,
+          "Height": 240,
+          "Visible": true,
+          "BorderStyle": {
+            "RadiusTopLeft": 8,
+            "RadiusTopRight": 8,
+            "RadiusBottomLeft": 8,
+            "RadiusBottomRight": 8
+          },
+          "BackgroundColor": "#D910141B",
+          "Bindings": {
+            "BackgroundColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#D91E1E1E',if(isnull([Settings.Theme.Key],'current') == 'dracula','#D9282A36',if(isnull([Settings.Theme.Key],'current') == 'nord','#D92E3440',if(isnull([Settings.Theme.Key],'current') == 'monokai','#D9272822',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#D9002B36','#D910141B')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "BackgroundColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "Connection status",
+          "Text": "Waiting for iRacing",
+          "Font": "Consolas",
+          "FontSize": 13,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 8,
+          "Width": 292,
+          "Height": 20,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing','TIRE TEMP / PRESSURE','Waiting for iRacing')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            },
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FF9CDCFE',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBD93F9',if(isnull([Settings.Theme.Key],'current') == 'nord','#FF88C0D0',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFA6E22E',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF2AA198','#FFD0D6DE')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          },
+          "TextColor": "#FFD0D6DE"
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "Units label",
+          "Text": "AVG TEMP \u00b0C / COLD PSI",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 30,
+          "Width": 292,
+          "Height": 16,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LF label",
+          "Text": "LF",
+          "Font": "Consolas",
+          "FontSize": 12,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 54,
+          "Width": 136,
+          "Height": 18,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFD0D6DE",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FF9CDCFE',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBD93F9',if(isnull([Settings.Theme.Key],'current') == 'nord','#FF88C0D0',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFA6E22E',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF2AA198','#FFD0D6DE')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LF temperature",
+          "Text": "---",
+          "Font": "Consolas",
+          "FontSize": 24,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 75,
+          "Width": 66,
+          "Height": 32,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull([DataCorePlugin.GameRawData.Telemetry.LFtempCL],-1) >= 0 && isnull([DataCorePlugin.GameRawData.Telemetry.LFtempCM],-1) >= 0 && isnull([DataCorePlugin.GameRawData.Telemetry.LFtempCR],-1) >= 0 && (([DataCorePlugin.GameRawData.Telemetry.LFtempCL] + [DataCorePlugin.GameRawData.Telemetry.LFtempCM] + [DataCorePlugin.GameRawData.Telemetry.LFtempCR]) / 3.0) <= 999,format(([DataCorePlugin.GameRawData.Telemetry.LFtempCL] + [DataCorePlugin.GameRawData.Telemetry.LFtempCM] + [DataCorePlugin.GameRawData.Telemetry.LFtempCR]) / 3.0,'000'),'---'),'---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            },
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFD4D4D4',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFECEFF4',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFFFFFFF')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          },
+          "TextColor": "#FFFFFFFF"
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LF temperature label",
+          "Text": "\u00b0C",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 109,
+          "Width": 66,
+          "Height": 14,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LF pressure",
+          "Text": "---",
+          "Font": "Consolas",
+          "FontSize": 24,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 84,
+          "Top": 75,
+          "Width": 66,
+          "Height": 32,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull([DataCorePlugin.GameRawData.Telemetry.LFcoldPressure],-1) >= 0 && ([DataCorePlugin.GameRawData.Telemetry.LFcoldPressure] / 6.894757293168) <= 99.9 && [DataCorePlugin.GameRawData.Telemetry.LFcoldPressure] > 0,format([DataCorePlugin.GameRawData.Telemetry.LFcoldPressure] / 6.894757293168,'00.0'),'---'),'---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            },
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFD4D4D4',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFECEFF4',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFFFFFFF')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          },
+          "TextColor": "#FFFFFFFF"
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LF pressure label",
+          "Text": "PSI",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 84,
+          "Top": 109,
+          "Width": 66,
+          "Height": 14,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RF label",
+          "Text": "RF",
+          "Font": "Consolas",
+          "FontSize": 12,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 170,
+          "Top": 54,
+          "Width": 136,
+          "Height": 18,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFD0D6DE",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FF9CDCFE',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBD93F9',if(isnull([Settings.Theme.Key],'current') == 'nord','#FF88C0D0',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFA6E22E',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF2AA198','#FFD0D6DE')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RF temperature",
+          "Text": "---",
+          "Font": "Consolas",
+          "FontSize": 24,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 170,
+          "Top": 75,
+          "Width": 66,
+          "Height": 32,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull([DataCorePlugin.GameRawData.Telemetry.RFtempCL],-1) >= 0 && isnull([DataCorePlugin.GameRawData.Telemetry.RFtempCM],-1) >= 0 && isnull([DataCorePlugin.GameRawData.Telemetry.RFtempCR],-1) >= 0 && (([DataCorePlugin.GameRawData.Telemetry.RFtempCL] + [DataCorePlugin.GameRawData.Telemetry.RFtempCM] + [DataCorePlugin.GameRawData.Telemetry.RFtempCR]) / 3.0) <= 999,format(([DataCorePlugin.GameRawData.Telemetry.RFtempCL] + [DataCorePlugin.GameRawData.Telemetry.RFtempCM] + [DataCorePlugin.GameRawData.Telemetry.RFtempCR]) / 3.0,'000'),'---'),'---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            },
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFD4D4D4',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFECEFF4',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFFFFFFF')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          },
+          "TextColor": "#FFFFFFFF"
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RF temperature label",
+          "Text": "\u00b0C",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 170,
+          "Top": 109,
+          "Width": 66,
+          "Height": 14,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RF pressure",
+          "Text": "---",
+          "Font": "Consolas",
+          "FontSize": 24,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 240,
+          "Top": 75,
+          "Width": 66,
+          "Height": 32,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull([DataCorePlugin.GameRawData.Telemetry.RFcoldPressure],-1) >= 0 && ([DataCorePlugin.GameRawData.Telemetry.RFcoldPressure] / 6.894757293168) <= 99.9 && [DataCorePlugin.GameRawData.Telemetry.RFcoldPressure] > 0,format([DataCorePlugin.GameRawData.Telemetry.RFcoldPressure] / 6.894757293168,'00.0'),'---'),'---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            },
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFD4D4D4',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFECEFF4',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFFFFFFF')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          },
+          "TextColor": "#FFFFFFFF"
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RF pressure label",
+          "Text": "PSI",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 240,
+          "Top": 109,
+          "Width": 66,
+          "Height": 14,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LR label",
+          "Text": "LR",
+          "Font": "Consolas",
+          "FontSize": 12,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 137,
+          "Width": 136,
+          "Height": 18,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFD0D6DE",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FF9CDCFE',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBD93F9',if(isnull([Settings.Theme.Key],'current') == 'nord','#FF88C0D0',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFA6E22E',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF2AA198','#FFD0D6DE')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LR temperature",
+          "Text": "---",
+          "Font": "Consolas",
+          "FontSize": 24,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 158,
+          "Width": 66,
+          "Height": 32,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull([DataCorePlugin.GameRawData.Telemetry.LRtempCL],-1) >= 0 && isnull([DataCorePlugin.GameRawData.Telemetry.LRtempCM],-1) >= 0 && isnull([DataCorePlugin.GameRawData.Telemetry.LRtempCR],-1) >= 0 && (([DataCorePlugin.GameRawData.Telemetry.LRtempCL] + [DataCorePlugin.GameRawData.Telemetry.LRtempCM] + [DataCorePlugin.GameRawData.Telemetry.LRtempCR]) / 3.0) <= 999,format(([DataCorePlugin.GameRawData.Telemetry.LRtempCL] + [DataCorePlugin.GameRawData.Telemetry.LRtempCM] + [DataCorePlugin.GameRawData.Telemetry.LRtempCR]) / 3.0,'000'),'---'),'---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            },
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFD4D4D4',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFECEFF4',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFFFFFFF')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          },
+          "TextColor": "#FFFFFFFF"
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LR temperature label",
+          "Text": "\u00b0C",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 192,
+          "Width": 66,
+          "Height": 14,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LR pressure",
+          "Text": "---",
+          "Font": "Consolas",
+          "FontSize": 24,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 84,
+          "Top": 158,
+          "Width": 66,
+          "Height": 32,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull([DataCorePlugin.GameRawData.Telemetry.LRcoldPressure],-1) >= 0 && ([DataCorePlugin.GameRawData.Telemetry.LRcoldPressure] / 6.894757293168) <= 99.9 && [DataCorePlugin.GameRawData.Telemetry.LRcoldPressure] > 0,format([DataCorePlugin.GameRawData.Telemetry.LRcoldPressure] / 6.894757293168,'00.0'),'---'),'---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            },
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFD4D4D4',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFECEFF4',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFFFFFFF')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          },
+          "TextColor": "#FFFFFFFF"
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "LR pressure label",
+          "Text": "PSI",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 84,
+          "Top": 192,
+          "Width": 66,
+          "Height": 14,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RR label",
+          "Text": "RR",
+          "Font": "Consolas",
+          "FontSize": 12,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 170,
+          "Top": 137,
+          "Width": 136,
+          "Height": 18,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFD0D6DE",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FF9CDCFE',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBD93F9',if(isnull([Settings.Theme.Key],'current') == 'nord','#FF88C0D0',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFA6E22E',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF2AA198','#FFD0D6DE')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RR temperature",
+          "Text": "---",
+          "Font": "Consolas",
+          "FontSize": 24,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 170,
+          "Top": 158,
+          "Width": 66,
+          "Height": 32,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull([DataCorePlugin.GameRawData.Telemetry.RRtempCL],-1) >= 0 && isnull([DataCorePlugin.GameRawData.Telemetry.RRtempCM],-1) >= 0 && isnull([DataCorePlugin.GameRawData.Telemetry.RRtempCR],-1) >= 0 && (([DataCorePlugin.GameRawData.Telemetry.RRtempCL] + [DataCorePlugin.GameRawData.Telemetry.RRtempCM] + [DataCorePlugin.GameRawData.Telemetry.RRtempCR]) / 3.0) <= 999,format(([DataCorePlugin.GameRawData.Telemetry.RRtempCL] + [DataCorePlugin.GameRawData.Telemetry.RRtempCM] + [DataCorePlugin.GameRawData.Telemetry.RRtempCR]) / 3.0,'000'),'---'),'---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            },
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFD4D4D4',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFECEFF4',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFFFFFFF')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          },
+          "TextColor": "#FFFFFFFF"
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RR temperature label",
+          "Text": "\u00b0C",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 170,
+          "Top": 192,
+          "Width": 66,
+          "Height": 14,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RR pressure",
+          "Text": "---",
+          "Font": "Consolas",
+          "FontSize": 24,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 240,
+          "Top": 158,
+          "Width": 66,
+          "Height": 32,
+          "Visible": true,
+          "Opacity": 100,
+          "Bindings": {
+            "Text": {
+              "Formula": {
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull([DataCorePlugin.GameRawData.Telemetry.RRcoldPressure],-1) >= 0 && ([DataCorePlugin.GameRawData.Telemetry.RRcoldPressure] / 6.894757293168) <= 99.9 && [DataCorePlugin.GameRawData.Telemetry.RRcoldPressure] > 0,format([DataCorePlugin.GameRawData.Telemetry.RRcoldPressure] / 6.894757293168,'00.0'),'---'),'---')"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "Text"
+            },
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFD4D4D4',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFECEFF4',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFF8F8F2',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFFFFFFF')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          },
+          "TextColor": "#FFFFFFFF"
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "RR pressure label",
+          "Text": "PSI",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 240,
+          "Top": 192,
+          "Width": 66,
+          "Height": 14,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        },
+        {
+          "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
+          "IsTextItem": true,
+          "Name": "Update label",
+          "Text": "TEMPS: PIT READINGS",
+          "Font": "Consolas",
+          "FontSize": 10,
+          "FontWeight": "Normal",
+          "HorizontalAlignment": 0,
+          "VerticalAlignment": 1,
+          "BackgroundColor": "#00FFFFFF",
+          "Left": 14,
+          "Top": 220,
+          "Width": 292,
+          "Height": 14,
+          "Visible": true,
+          "Opacity": 100,
+          "TextColor": "#FFB0BAC8",
+          "Bindings": {
+            "TextColor": {
+              "Formula": {
+                "Expression": "if(isnull([Settings.Theme.Key],'current') == 'vscode-dark','#FFBBBBBB',if(isnull([Settings.Theme.Key],'current') == 'dracula','#FFBFC8E8',if(isnull([Settings.Theme.Key],'current') == 'nord','#FFD8DEE9',if(isnull([Settings.Theme.Key],'current') == 'monokai','#FFC7C7B9',if(isnull([Settings.Theme.Key],'current') == 'solarized-dark','#FF93A1A1','#FFB0BAC8')))))"
+              },
+              "Mode": 2,
+              "TargetPropertyName": "TextColor"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

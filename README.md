@@ -6,6 +6,9 @@ A growing collection of SimHub overlays for iRacing by **guysmiley222**. Each ov
 | --- | --- | --- |
 | Basic Lap Timer | Current, last, and session-best lap times in a compact translucent panel | [Basic Lap Timer](Basic%20Lap%20Timer/) |
 | Advanced Lap Timer | Current lap plus live splits and matching session/all-time best references | [Advanced Lap Timer](Advanced%20Lap%20Timer/) |
+| Advanced Lap Timer - retro | Native seven-segment LCD styling with matching lap references | [Retro lap timer](Advanced%20Lap%20Timer%20-%20retro/) |
+| Tire Temp and Pressure | Four-corner average temperature (�C) and cold pressure (PSI) | [Standard](Tire%20Temp%20and%20Pressure/) |
+| Tire Temp and Pressure - retro | The same readings with LCD seven-segment instruments | [Retro](Tire%20Temp%20and%20Pressure%20-%20retro/) |
 
 ## Getting started
 

@@ -1,0 +1,60 @@
+{
+  "SettingsBuilder": {
+    "Settings": [
+      {
+        "$type": "SimHub.Plugins.SettingsBuilderModule.ComboboxEntry, SimHub.Plugins",
+        "Options": [
+          {
+            "Key": "current",
+            "Label": "Current"
+          },
+          {
+            "Key": "vscode-dark",
+            "Label": "VS Code Dark+"
+          },
+          {
+            "Key": "dracula",
+            "Label": "Dracula"
+          },
+          {
+            "Key": "nord",
+            "Label": "Nord"
+          },
+          {
+            "Key": "monokai",
+            "Label": "Monokai"
+          },
+          {
+            "Key": "solarized-dark",
+            "Label": "Solarized Dark"
+          }
+        ],
+        "PropertyName": "Theme",
+        "DefaultValue": "current",
+        "TypeName": "ComboboxEntry",
+        "Label": "Theme",
+        "Id": "36c70a45-80f5-5af0-b04c-0016ef52cf1c"
+      }
+    ]
+  },
+  "Title": "guysmiley222 - Tire Temp and Pressure - retro",
+  "Description": "Four-corner average carcass temperature (\u00b0C) and garage cold pressure (PSI). Temperatures are pit readings.",
+  "Author": "guysmiley222",
+  "Width": 320,
+  "Height": 240,
+  "ScreenCount": 1,
+  "InGameScreensIndexs": [
+    0
+  ],
+  "IdleScreensIndexs": [
+    0
+  ],
+  "PitScreensIndexs": [
+    0
+  ],
+  "MainPreviewIndex": 0,
+  "IsOverlay": true,
+  "OverlaySizeWarning": false,
+  "MetadataVersion": 2,
+  "DashboardVersion": "0.1.0"
+}

@@ -22,6 +22,8 @@ The unsuffixed package is retained for compatibility; use themed packages for th
 
 ## Timing and splits
 
+Times use fixed-width Consolas digits and leading zeroes for a stable LCD-style layout. Laps display `mm:ss.fff` through `59:59.999`. Splits remain signed seconds with three integer digits (`+000.318` or `-599.999`), accommodating differences through 9 minutes 59.999 seconds without shifting the decimal point.
+
 Current lap uses `DataCorePlugin.GameData.NewData.CurrentLapTime`. Best references and live splits use SimHub's built-in persistent tracker, with each delta paired to its own reference:
 
 | Comparison | Best lap property | Delta property (seconds) |
@@ -31,9 +33,9 @@ Current lap uses `DataCorePlugin.GameData.NewData.CurrentLapTime`. Best referenc
 
 The spelling `PersistantTrackerPlugin` is SimHub's property name. All-time best means the reference retained by **your local SimHub tracker** for its car/track combination; it is not an online world record or a downloaded iRacing personal-best history. Session best uses the same tracker as the session split to keep the comparison aligned.
 
-Splits compare elapsed time at the same position on the lap: **negative means faster**, **positive means slower**, and zero displays `+0.000`. They are live lap deltas, not individual sector times or subtraction of the current partial lap from a full best lap.
+Splits compare elapsed time at the same position on the lap: **negative means faster**, **positive means slower**, and zero displays `+000.000`. They are live lap deltas, not individual sector times or subtraction of the current partial lap from a full best lap.
 
-Missing or zero reference times display `--:--.---`; a missing reference or delta displays `--.---`. SimHub must have a reference lap and tracking map before it can provide a useful live comparison. Reference selection, validity, persistence, and any transient availability during lap/session changes follow SimHub. No extra plugin or custom lap-history database is required.
+Missing or zero reference times display `--:--.---`; a missing reference or delta displays `---.---`. SimHub must have a reference lap and tracking map before it can provide a useful live comparison. Reference selection, validity, persistence, and any transient availability during lap/session changes follow SimHub. No extra plugin or custom lap-history database is required.
 
 ## Build and verify
 

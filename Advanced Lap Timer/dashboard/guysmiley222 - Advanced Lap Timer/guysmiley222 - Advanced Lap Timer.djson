@@ -134,7 +134,7 @@
           "Bindings": {
             "Text": {
               "Formula": {
-                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([DataCorePlugin.GameData.NewData.CurrentLapTime],'m\\\\:ss\\\\.fff'),'') == '','--:--.---',replace(format([DataCorePlugin.GameData.NewData.CurrentLapTime],'m\\\\:ss\\\\.fff'),'0:00.000','--:--.---')),'--:--.---')"
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([DataCorePlugin.GameData.NewData.CurrentLapTime],'mm\\\\:ss\\\\.fff'),'') == '','--:--.---',replace(format([DataCorePlugin.GameData.NewData.CurrentLapTime],'mm\\\\:ss\\\\.fff'),'00:00.000','--:--.---')),'--:--.---')"
               },
               "Mode": 2,
               "TargetPropertyName": "Text"
@@ -209,7 +209,7 @@
           "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
           "IsTextItem": true,
           "Name": "session split",
-          "Text": "--.---",
+          "Text": "---.---",
           "Font": "Consolas",
           "FontSize": 20,
           "FontWeight": "Normal",
@@ -225,7 +225,7 @@
           "Bindings": {
             "Text": {
               "Formula": {
-                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([PersistantTrackerPlugin.SessionBest],'m\\\\:ss\\\\.fff'),'') == '' || isnull(format([PersistantTrackerPlugin.SessionBest],'m\\\\:ss\\\\.fff'),'') == '0:00.000','--.---',if(isnull(format([PersistantTrackerPlugin.SessionBestLiveDeltaSeconds],'+0.000;-0.000;+0.000'),'') == '','--.---',format([PersistantTrackerPlugin.SessionBestLiveDeltaSeconds],'+0.000;-0.000;+0.000'))),'--.---')"
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([PersistantTrackerPlugin.SessionBest],'mm\\\\:ss\\\\.fff'),'') == '' || isnull(format([PersistantTrackerPlugin.SessionBest],'mm\\\\:ss\\\\.fff'),'') == '00:00.000','---.---',if(isnull(format([PersistantTrackerPlugin.SessionBestLiveDeltaSeconds],'+000.000;-000.000;+000.000'),'') == '','---.---',format([PersistantTrackerPlugin.SessionBestLiveDeltaSeconds],'+000.000;-000.000;+000.000'))),'---.---')"
               },
               "Mode": 2,
               "TargetPropertyName": "Text"
@@ -260,7 +260,7 @@
           "Bindings": {
             "Text": {
               "Formula": {
-                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([PersistantTrackerPlugin.SessionBest],'m\\\\:ss\\\\.fff'),'') == '','--:--.---',replace(format([PersistantTrackerPlugin.SessionBest],'m\\\\:ss\\\\.fff'),'0:00.000','--:--.---')),'--:--.---')"
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([PersistantTrackerPlugin.SessionBest],'mm\\\\:ss\\\\.fff'),'') == '','--:--.---',replace(format([PersistantTrackerPlugin.SessionBest],'mm\\\\:ss\\\\.fff'),'00:00.000','--:--.---')),'--:--.---')"
               },
               "Mode": 2,
               "TargetPropertyName": "Text"
@@ -335,7 +335,7 @@
           "$type": "SimHub.Plugins.OutputPlugins.GraphicalDash.Models.TextItem, SimHub.Plugins",
           "IsTextItem": true,
           "Name": "alltime split",
-          "Text": "--.---",
+          "Text": "---.---",
           "Font": "Consolas",
           "FontSize": 20,
           "FontWeight": "Normal",
@@ -351,7 +351,7 @@
           "Bindings": {
             "Text": {
               "Formula": {
-                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([PersistantTrackerPlugin.AllTimeBest],'m\\\\:ss\\\\.fff'),'') == '' || isnull(format([PersistantTrackerPlugin.AllTimeBest],'m\\\\:ss\\\\.fff'),'') == '0:00.000','--.---',if(isnull(format([PersistantTrackerPlugin.AllTimeBestLiveDeltaSeconds],'+0.000;-0.000;+0.000'),'') == '','--.---',format([PersistantTrackerPlugin.AllTimeBestLiveDeltaSeconds],'+0.000;-0.000;+0.000'))),'--.---')"
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([PersistantTrackerPlugin.AllTimeBest],'mm\\\\:ss\\\\.fff'),'') == '' || isnull(format([PersistantTrackerPlugin.AllTimeBest],'mm\\\\:ss\\\\.fff'),'') == '00:00.000','---.---',if(isnull(format([PersistantTrackerPlugin.AllTimeBestLiveDeltaSeconds],'+000.000;-000.000;+000.000'),'') == '','---.---',format([PersistantTrackerPlugin.AllTimeBestLiveDeltaSeconds],'+000.000;-000.000;+000.000'))),'---.---')"
               },
               "Mode": 2,
               "TargetPropertyName": "Text"
@@ -386,7 +386,7 @@
           "Bindings": {
             "Text": {
               "Formula": {
-                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([PersistantTrackerPlugin.AllTimeBest],'m\\\\:ss\\\\.fff'),'') == '','--:--.---',replace(format([PersistantTrackerPlugin.AllTimeBest],'m\\\\:ss\\\\.fff'),'0:00.000','--:--.---')),'--:--.---')"
+                "Expression": "if([DataCorePlugin.GameRunning] && [DataCorePlugin.CurrentGame] == 'IRacing',if(isnull(format([PersistantTrackerPlugin.AllTimeBest],'mm\\\\:ss\\\\.fff'),'') == '','--:--.---',replace(format([PersistantTrackerPlugin.AllTimeBest],'mm\\\\:ss\\\\.fff'),'00:00.000','--:--.---')),'--:--.---')"
               },
               "Mode": 2,
               "TargetPropertyName": "Text"

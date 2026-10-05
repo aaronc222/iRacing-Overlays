@@ -29,18 +29,19 @@ foreach($reference in @(
 )){
     $script:values[$reference.Best]=[TimeSpan]::FromMilliseconds(80123)
     foreach($case in @(
-        @{Delta=-0.245;Text='-0.245'}, @{Delta=0.318;Text='+0.318'},
-        @{Delta=0.0;Text='+0.000'}, @{Delta=12.345;Text='+12.345'},
-        @{Delta=$null;Text='--.---'}
+        @{Delta=-0.245;Text='-000.245'}, @{Delta=0.318;Text='+000.318'},
+        @{Delta=0.0;Text='+000.000'}, @{Delta=12.345;Text='+012.345'},
+        @{Delta=599.999;Text='+599.999'}, @{Delta=-599.999;Text='-599.999'},
+        @{Delta=60.0;Text='+060.000'}, @{Delta=$null;Text='---.---'}
     )){
         $script:values[$reference.Delta]=$case.Delta
         Assert-Equal (Evaluate-Item ($reference.Key+' split')) $case.Text
-        Assert-Equal (Evaluate-Item ($reference.Key+' best')) '1:20.123'
+        Assert-Equal (Evaluate-Item ($reference.Key+' best')) '01:20.123'
     }
     $script:values[$reference.Delta]=0.318
     foreach($missingBest in @($null,[TimeSpan]::Zero)){
         $script:values[$reference.Best]=$missingBest
-        Assert-Equal (Evaluate-Item ($reference.Key+' split')) '--.---'
+        Assert-Equal (Evaluate-Item ($reference.Key+' split')) '---.---'
         Assert-Equal (Evaluate-Item ($reference.Key+' best')) '--:--.---'
     }
 }
@@ -49,20 +50,28 @@ $script:values['PersistantTrackerPlugin.AllTimeBest']=[TimeSpan]::FromMillisecon
 $script:values['PersistantTrackerPlugin.SessionBestLiveDeltaSeconds']=-0.245
 $script:values['PersistantTrackerPlugin.AllTimeBestLiveDeltaSeconds']=0.318
 $script:values['DataCorePlugin.GameData.NewData.CurrentLapTime']=[TimeSpan]::FromMilliseconds(31234)
-Assert-Equal (Evaluate-Item 'Current lap') '0:31.234'
-Assert-Equal (Evaluate-Item 'session split') '-0.245'
-Assert-Equal (Evaluate-Item 'alltime split') '+0.318'
-Assert-Equal (Evaluate-Item 'session best') '1:20.123'
-Assert-Equal (Evaluate-Item 'alltime best') '1:18.012'
+Assert-Equal (Evaluate-Item 'Current lap') '00:31.234'
+Assert-Equal (Evaluate-Item 'session split') '-000.245'
+Assert-Equal (Evaluate-Item 'alltime split') '+000.318'
+Assert-Equal (Evaluate-Item 'session best') '01:20.123'
+Assert-Equal (Evaluate-Item 'alltime best') '01:18.012'
 foreach($state in @(@{Running=$false;Game='IRacing'},@{Running=$true;Game='OtherGame'})){
     $script:values['DataCorePlugin.GameRunning']=$state.Running
     $script:values['DataCorePlugin.CurrentGame']=$state.Game
     Assert-Equal (Evaluate-Item 'Connection status') 'Waiting for iRacing'
-    Assert-Equal (Evaluate-Item 'session split') '--.---'
-    Assert-Equal (Evaluate-Item 'alltime split') '--.---'
+    Assert-Equal (Evaluate-Item 'session split') '---.---'
+    Assert-Equal (Evaluate-Item 'alltime split') '---.---'
 }
 $script:values['DataCorePlugin.GameRunning']=$true
 $script:values['DataCorePlugin.CurrentGame']='IRacing'
-Assert-Equal (Evaluate-Item 'session split') '-0.245'
+Assert-Equal (Evaluate-Item 'session split') '-000.245'
 Write-Output 'PASS: independent reference laps, signed deltas, zero, missing references/deltas, connection states, and recovery'
 Write-Output 'NOTE: live tracking-map availability and runtime display remain unverified; handlers use .NET equivalents'
+
+$script:values['DataCorePlugin.GameData.NewData.CurrentLapTime']=[TimeSpan]::FromMilliseconds(3599999)
+Assert-Equal (Evaluate-Item 'Current lap') '59:59.999'
+$script:values['PersistantTrackerPlugin.SessionBest']=[TimeSpan]::FromMilliseconds(3599999)
+$script:values['PersistantTrackerPlugin.AllTimeBest']=[TimeSpan]::FromMilliseconds(3599999)
+Assert-Equal (Evaluate-Item 'session best') '59:59.999'
+Assert-Equal (Evaluate-Item 'alltime best') '59:59.999'
+Write-Output 'PASS: 59-minute laps and signed 9-minute splits'
