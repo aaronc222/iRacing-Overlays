@@ -10,6 +10,7 @@ A growing collection of SimHub overlays for iRacing by **guysmiley222**. Each ov
 | Tire Temp and Pressure | Four-corner average temperature (�C) and cold pressure (PSI) | [Standard](Tire%20Temp%20and%20Pressure/) |
 | Tire Temp and Pressure - retro | The same readings with LCD seven-segment instruments | [Retro](Tire%20Temp%20and%20Pressure%20-%20retro/) |
 | Shift Lights | Ten-LED shift lights that flash at redline, plus gear, RPM, throttle, and redline | [Shift Lights](Shift%20Lights/) |
+| Shift Lights - retro | The same lights with an LCD bezel and seven-segment gear and RPM | [Retro](Shift%20Lights%20-%20retro/) |
 
 ## Getting started
 

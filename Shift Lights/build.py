@@ -29,15 +29,15 @@ def number(prop, digits, valid=None):
     return f"if({CONNECTED},if({check},format({value},'{'0' * digits}'),'{'-' * digits}'),'{'-' * digits}')"
 
 
-def led(index, threshold, role, left):
-    item = panel(26, 18)
-    item.update(Name=f"LED {index + 1}", Left=left, Top=12)
-    item["BorderStyle"] = {key: 4 for key in item["BorderStyle"]}
+def led(index, threshold, role, left, top=12, width=26, height=18, radius=4, unlit=UNLIT):
+    item = panel(width, height)
+    item.update(Name=f"LED {index + 1}", Left=left, Top=top)
+    item["BorderStyle"] = {key: radius for key in item["BorderStyle"]}
     themed(item, "BackgroundColor", role)
     lit = f"({CONNECTED}) && ({REDLINE}) > 0 && {RPM} >= ({REDLINE}) * {threshold:.2f}"
     item["Bindings"]["Opacity"] = binding(
-        f"if({AT_LIMIT},if(blink('shiftlights',100,true),{LIT},{UNLIT}),if({lit},{LIT},{UNLIT}))", "Opacity")
-    item["Opacity"] = LIT if SAMPLE_RPM >= SAMPLE_REDLINE * threshold else UNLIT
+        f"if({AT_LIMIT},if(blink('shiftlights',100,true),{LIT},{unlit}),if({lit},{LIT},{unlit}))", "Opacity")
+    item["Opacity"] = LIT if SAMPLE_RPM >= SAMPLE_REDLINE * threshold else unlit
     return item
 
 
