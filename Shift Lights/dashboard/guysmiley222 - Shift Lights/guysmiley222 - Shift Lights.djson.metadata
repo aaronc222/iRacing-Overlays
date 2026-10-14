@@ -1,0 +1,60 @@
+{
+  "SettingsBuilder": {
+    "Settings": [
+      {
+        "$type": "SimHub.Plugins.SettingsBuilderModule.ComboboxEntry, SimHub.Plugins",
+        "Options": [
+          {
+            "Key": "current",
+            "Label": "Current"
+          },
+          {
+            "Key": "vscode-dark",
+            "Label": "VS Code Dark+"
+          },
+          {
+            "Key": "dracula",
+            "Label": "Dracula"
+          },
+          {
+            "Key": "nord",
+            "Label": "Nord"
+          },
+          {
+            "Key": "monokai",
+            "Label": "Monokai"
+          },
+          {
+            "Key": "solarized-dark",
+            "Label": "Solarized Dark"
+          }
+        ],
+        "PropertyName": "Theme",
+        "DefaultValue": "current",
+        "TypeName": "ComboboxEntry",
+        "Label": "Theme",
+        "Id": "9c3280a9-bee1-511d-95c5-df22472548c3"
+      }
+    ]
+  },
+  "Title": "guysmiley222 - Shift Lights",
+  "Description": "Ten-LED iRacing shift lights that flash at redline, with gear, RPM, throttle, and redline readouts.",
+  "Author": "guysmiley222",
+  "Width": 320,
+  "Height": 150,
+  "ScreenCount": 1,
+  "InGameScreensIndexs": [
+    0
+  ],
+  "IdleScreensIndexs": [
+    0
+  ],
+  "PitScreensIndexs": [
+    0
+  ],
+  "MainPreviewIndex": 0,
+  "IsOverlay": true,
+  "OverlaySizeWarning": false,
+  "MetadataVersion": 2,
+  "DashboardVersion": "0.1.0"
+}

@@ -9,6 +9,7 @@ A growing collection of SimHub overlays for iRacing by **guysmiley222**. Each ov
 | Advanced Lap Timer - retro | Native seven-segment LCD styling with matching lap references | [Retro lap timer](Advanced%20Lap%20Timer%20-%20retro/) |
 | Tire Temp and Pressure | Four-corner average temperature (�C) and cold pressure (PSI) | [Standard](Tire%20Temp%20and%20Pressure/) |
 | Tire Temp and Pressure - retro | The same readings with LCD seven-segment instruments | [Retro](Tire%20Temp%20and%20Pressure%20-%20retro/) |
+| Shift Lights | Ten-LED shift lights that flash at redline, plus gear, RPM, throttle, and redline | [Shift Lights](Shift%20Lights/) |
 
 ## Getting started
 

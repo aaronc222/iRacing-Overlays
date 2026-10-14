@@ -26,6 +26,7 @@ $parameters = [NCalc.EvaluateParameterHandler] {
     $evaluationArgs.Result = $script:themeKey
 }
 function ThemeColor($item, [string]$property) {
+    if ($null -eq $item.Bindings -or $null -eq $item.Bindings.$property) { return $item.$property }
     $expression = New-Object NCalc.Expression($item.Bindings.$property.Formula.Expression)
     $expression.add_EvaluateFunction($functions)
     $expression.add_EvaluateParameter($parameters)
@@ -37,6 +38,7 @@ function New-Panel([string]$key) {
     $canvas.Width = $dashboard.BaseWidth
     $canvas.Height = $dashboard.BaseHeight
     foreach ($item in $dashboard.Screens[0].Items) {
+        if ($item.Visible -eq $false) { continue }
         if ($item.IsRectangleItem) {
             $control = New-Object System.Windows.Shapes.Rectangle
             $control.Fill = $brushConverter.ConvertFromString((ThemeColor $item 'BackgroundColor'))
@@ -53,6 +55,7 @@ function New-Panel([string]$key) {
             $label.VerticalAlignment = 'Center'
             $control.Child = $label
         }
+        if ($null -ne $item.Opacity) { $control.Opacity = $item.Opacity / 100 }
         $control.Width = $item.Width
         $control.Height = $item.Height
         [System.Windows.Controls.Canvas]::SetLeft($control, $item.Left)
